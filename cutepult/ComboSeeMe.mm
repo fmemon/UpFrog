@@ -65,7 +65,7 @@ static inline float mtp(float d)
     if( (self=[super init])) { 
         
         // enable touches
-        self.isTouchEnabled = YES; 
+        //self.isTouchEnabled = YES; 
         
         // enable accelerometer        
         self.isAccelerometerEnabled = YES; 
@@ -231,28 +231,30 @@ static inline float mtp(float d)
         
         [self restoreData];
         // Enable touches        
-        [[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
+        //[[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
         //Pause Toggle can not sure frame cache for sprites!!!!!
-		CCMenuItemSprite *playItem = [CCMenuItemSprite itemFromNormalSprite:[CCSprite spriteWithFile:@"newPauseON.png"]
-                                                             selectedSprite:[CCSprite spriteWithFile:@"newPauseONSelect.png"]];
-        
-		CCMenuItemSprite *pauseItem = [CCMenuItemSprite itemFromNormalSprite:[CCSprite spriteWithFile:@"newPauseOFF.png"]
-                                                              selectedSprite:[CCSprite spriteWithFile:@"newPauseOFFSelect.png"]];
-        CCMenuItemToggle *pause;
-		if (!muted)  {
-            pause = [CCMenuItemToggle itemWithTarget:self selector:@selector(turnOnMusic)items:playItem, pauseItem, nil];
-            pause.position = ccp(screenSize.width*0.05, screenSize.height*0.95f);
-        }
-        else {
-            pause = [CCMenuItemToggle itemWithTarget:self selector:@selector(turnOnMusic)items:pauseItem, playItem, nil];
-            pause.position = ccp(screenSize.width*0.05, screenSize.height*0.95f);
-        }
-        
-        
-		//Create Menu with the items created before
-		CCMenu *menu = [CCMenu menuWithItems:pause, nil];
-		menu.position = CGPointZero;
-		[self addChild:menu z:11];
+		/*
+         CCMenuItemSprite *playItem = [CCMenuItemSprite itemFromNormalSprite:[CCSprite spriteWithFile:@"newPauseON.png"]
+         selectedSprite:[CCSprite spriteWithFile:@"newPauseONSelect.png"]];
+         
+         CCMenuItemSprite *pauseItem = [CCMenuItemSprite itemFromNormalSprite:[CCSprite spriteWithFile:@"newPauseOFF.png"]
+         selectedSprite:[CCSprite spriteWithFile:@"newPauseOFFSelect.png"]];
+         CCMenuItemToggle *pause;
+         if (!muted)  {
+         pause = [CCMenuItemToggle itemWithTarget:self selector:@selector(turnOnMusic)items:playItem, pauseItem, nil];
+         pause.position = ccp(screenSize.width*0.05, screenSize.height*0.95f);
+         }
+         else {
+         pause = [CCMenuItemToggle itemWithTarget:self selector:@selector(turnOnMusic)items:pauseItem, playItem, nil];
+         pause.position = ccp(screenSize.width*0.05, screenSize.height*0.95f);
+         }
+         
+         
+         //Create Menu with the items created before
+         CCMenu *menu = [CCMenu menuWithItems:pause, nil];
+         menu.position = CGPointZero;
+         [self addChild:menu z:11];
+         */
     }
     return self; 
 }
@@ -532,6 +534,29 @@ static inline float mtp(float d)
 	
 	world->SetGravity( gravity );
 }
+
+
+/*
+- (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    if (mouseJoint == nil) return;
+
+    
+}
+
+- (void)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    if (mouseJoint == nil) return;
+    
+
+}
+
+- (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+
+}
+
+*/
 
 -(void)removeRopes {
 	for(uint i=0;i<[vRopes count];i++) {

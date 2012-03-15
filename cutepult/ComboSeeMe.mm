@@ -492,7 +492,6 @@ static inline float mtp(float d)
             score +=100;
         } 
     }
-
 }
 
 -(void)callEmitter:(b2Body*)bodyB {    

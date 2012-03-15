@@ -29,10 +29,7 @@
     b2MouseJoint *mouseJoint;
     b2BodyDef bodyDef1;
     b2BodyDef bodyDef;
-    CCSpriteBatchNode* ropeSpriteSheet; //sprite sheet for rope segment
-
-//Call it Ball and Chain    
-    
+    CCSpriteBatchNode* ropeSpriteSheet; //sprite sheet for rope segment    
     
    //Breakout
     b2Fixture *_ballFixture;

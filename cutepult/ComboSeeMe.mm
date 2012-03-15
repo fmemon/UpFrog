@@ -192,7 +192,6 @@ static inline float mtp(float d)
          vRopes = [[NSMutableArray alloc] init];
         
         // +++ Create box2d joint
-        b2RopeJointDef rjd;
         rjd.bodyA=staticBody4; //define bodies
         rjd.bodyB=circle2;
         rjd.localAnchorA = b2Vec2(0,0); //define anchors
@@ -218,7 +217,8 @@ static inline float mtp(float d)
         //initialize the score
         score  = 0;
         highscore = 0;
-        
+                
+ 
         highscoreLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"HighScore: %i",highscore] fontName:@"Arial" fontSize:24];
         highscoreLabel.color = ccc3(26, 46, 149);
         highscoreLabel.position = ccp(340.0f, 300.0f);
@@ -274,7 +274,7 @@ static inline float mtp(float d)
 }
 
 - (void)updateScore {
-    [scoreLabel setString:[NSString stringWithFormat:@"Score: %i",score]];
+    [scoreLabel setString:[NSString stringWithFormat:@"       Score: %i",score]];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setInteger:score forKey:@"score"];
@@ -533,9 +533,21 @@ static inline float mtp(float d)
 	world->SetGravity( gravity );
 }
 
+-(void)removeRopes {
+	for(uint i=0;i<[vRopes count];i++) {
+		[[vRopes objectAtIndex:i] removeSprites];
+		[[vRopes objectAtIndex:i] release];
+	}
+	[vRopes removeAllObjects];
+}
+
 // on "dealloc" you need to release all your retained objects
 - (void) dealloc
 {
+//    To remove a rope you need to call the removeSprites method and then release:
+    [self removeRopes]; //remove the sprites of this rope from the spritebatchnode
+    [VRope release];
+    
 	// in case you have something to dealloc, do it in this method
 	delete world;
 	world = NULL;
@@ -546,7 +558,8 @@ static inline float mtp(float d)
     [walls release];
     
     //IF you have particular spritesheets to be removed! Don't use these if you haven't any
-    [[CCSpriteFrameCache sharedSpriteFrameCache]removeSpriteFramesFromFile:@"froggie.plist"];
+    //[[CCSpriteFrameCache sharedSpriteFrameCache]removeSpriteFramesFromFile:@"froggie.plist"];
+    [[CCSpriteFrameCache sharedSpriteFrameCache]removeSpriteFramesFromFile:@"froggie.png"];
     
     //Use these
     [[CCSpriteFrameCache sharedSpriteFrameCache] removeSpriteFrames];

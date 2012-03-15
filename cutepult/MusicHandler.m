@@ -1,12 +1,8 @@
 #import "MusicHandler.h"
 
-static NSString *WATER_EFFECT = @"splash2.mp3";
-//static NSString *WATER_EFFECT = @"gong.wav";
-static NSString *BOUNCE_EFFECT = @"boing.wav";
-static NSString *TARGET1_HIT_EFFECT = @"break.wav";
-static NSString *TARGET2_HIT_EFFECT = @"explosion.mp3";//not sure if working
-static NSString *TARGET3_HIT_EFFECT = @"ice.wav";
-static NSString *TARGET4_HIT_EFFECT = @"gong.wav";
+static NSString *WATER_EFFECT = @"splash2.caf";
+static NSString *BOUNCE_EFFECT = @"boing.caf";
+
 
 @interface MusicHandler()
 	+(void) playEffect:(NSString *)path;
@@ -20,10 +16,6 @@ static NSString *TARGET4_HIT_EFFECT = @"gong.wav";
 	if (engine) {
 		[engine preloadEffect:WATER_EFFECT];
 		[engine preloadEffect:BOUNCE_EFFECT];
-		[engine preloadEffect:TARGET1_HIT_EFFECT];
-		[engine preloadEffect:TARGET2_HIT_EFFECT];
-		[engine preloadEffect:TARGET3_HIT_EFFECT];
-		[engine preloadEffect:TARGET4_HIT_EFFECT];
 	}
 }
 
@@ -33,9 +25,7 @@ static NSString *TARGET4_HIT_EFFECT = @"gong.wav";
 +(void) playBounce{
 	[MusicHandler playEffect:BOUNCE_EFFECT];	
 }
-+(void) playWall{
-  [MusicHandler playEffect:TARGET4_HIT_EFFECT];	
-}
+
 
 +(void) playEffect: (NSString *) path{
 	[[SimpleAudioEngine sharedEngine] playEffect:path];

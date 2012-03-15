@@ -71,6 +71,7 @@
     CCParticleExplosion *myEmitter;
     
     BOOL stopWater;
+    b2RopeJointDef rjd;
 
 }
 
@@ -85,5 +86,6 @@
 - (void)scored:(b2Body*)bodyB;
 -(void)endGame:(b2Body*)bodyB;
 - (void)gotoHS;
+-(void)removeRopes;
 
 @end

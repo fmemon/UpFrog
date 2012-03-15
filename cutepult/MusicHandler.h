@@ -6,6 +6,5 @@
 +(void) preload;
 +(void) playWater;
 +(void) playBounce;
-+(void) playWall;
 
 @end

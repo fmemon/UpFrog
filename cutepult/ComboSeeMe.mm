@@ -130,9 +130,16 @@ static inline float mtp(float d)
         
         CCSprite *butterfly = [CCSprite spriteWithSpriteFrameName:@"Butterfly1.png"];     
         [self addChild:butterfly z:-10 tag:88];
-        butterfly.position = ccp(60.0f, 140.0f);
+        butterfly.position = ccp(95.0f, 100.0f);
+        butterfly.scale = 0.75f;
         [butterfly runAction:[self createButterflyAnim:YES]];
 
+        CCSprite *bullfrog = [CCSprite spriteWithSpriteFrameName:@"bullfrog1.png"];     
+        [self addChild:bullfrog z:-10 tag:88];
+        bullfrog.position = ccp(225.0f, 140.0f);
+        bullfrog.scale = 0.5f;
+        [bullfrog runAction:[self createBullfrogAnim:YES]];
+        
         //add the score sprites
         score100 = [CCSprite spriteWithSpriteFrameName:@"score100.png"];     
         score200 = [CCSprite spriteWithSpriteFrameName:@"score200.png"];     
@@ -348,24 +355,48 @@ static inline float mtp(float d)
         [walkAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:[NSString stringWithFormat:@"Butterfly%d.png", i]]];
     }
     
-    CCAnimation *walkAnim2 = [CCAnimation animationWithFrames:walkAnimFrames delay:0.2f];
+    CCAnimation *walkAnim2 = [CCAnimation animationWithFrames:walkAnimFrames delay:0.1f];
     
-    CCAnimate *blink2 = [CCAnimate actionWithDuration:0.4f animation:walkAnim2 restoreOriginalFrame:YES];
+    CCAnimate *blink2 = [CCAnimate actionWithDuration:0.21f animation:walkAnim2 restoreOriginalFrame:YES];
     
     CCAction *walkAction2 = [CCRepeatForever actionWithAction:
                             [CCSequence actions:
-                             [CCDelayTime actionWithDuration:CCRANDOM_0_1()*2.0f],
+                             [CCDelayTime actionWithDuration:CCRANDOM_0_1()*1.0f],
                              blink2,
-                             [CCDelayTime actionWithDuration:CCRANDOM_0_1()*3.0f],
+                             [CCDelayTime actionWithDuration:CCRANDOM_0_1()*2.0f],
                              blink2,
                              [CCDelayTime actionWithDuration:CCRANDOM_0_1()*0.2f],
                              blink2,
-                             [CCDelayTime actionWithDuration:CCRANDOM_0_1()*2.0f],
+                             [CCDelayTime actionWithDuration:CCRANDOM_0_1()*1.0f],
                              nil]
                             ];
     return walkAction2;
 }
 
+- (CCAction*)createBullfrogAnim:(BOOL)isTarget {
+    [walkAnimFrames removeAllObjects];
+    for (int i=1; i<6; i++) {
+        //[walkAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:[NSString stringWithFormat:@"blinker%dsm.png", i]]];
+        [walkAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:[NSString stringWithFormat:@"bullfrog%d.png", i]]];
+    }
+    
+    CCAnimation *walkAnim3 = [CCAnimation animationWithFrames:walkAnimFrames delay:0.4f];
+    
+    CCAnimate *blink3 = [CCAnimate actionWithDuration:0.3f animation:walkAnim3 restoreOriginalFrame:YES];
+    
+    CCAction *walkAction3 = [CCRepeatForever actionWithAction:
+                             [CCSequence actions:
+                              [CCDelayTime actionWithDuration:CCRANDOM_0_1()*2.0f],
+                              blink3,
+                              [CCDelayTime actionWithDuration:CCRANDOM_0_1()*3.0f],
+                              blink3,
+                              [CCDelayTime actionWithDuration:CCRANDOM_0_1()*0.2f],
+                              blink3,
+                              [CCDelayTime actionWithDuration:CCRANDOM_0_1()*2.0f],
+                              nil]
+                             ];
+    return walkAction3;
+}
 -(void) draw
 {
 	// Default GL states: GL_TEXTURE_2D, GL_VERTEX_ARRAY, GL_COLOR_ARRAY, GL_TEXTURE_COORD_ARRAY

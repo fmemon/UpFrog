@@ -88,5 +88,6 @@
 -(void)endGame:(b2Body*)bodyB;
 - (void)gotoHS;
 - (CCAction*)createButterflyAnim:(BOOL)isTarget;
+- (CCAction*)createBullfrogAnim:(BOOL)isTarget;
 
 @end

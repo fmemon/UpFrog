@@ -565,7 +565,8 @@ static inline float mtp(float d)
     int xStrength = int(abs(bodyB->GetPosition().x - 8)) + 1;
     int numParticle = 30 +CCRANDOM_0_1()*200 * xStrength;
     myEmitter = [[CCParticleExplosion alloc] initWithTotalParticles:numParticle];
-    myEmitter.texture = [[CCTextureCache sharedTextureCache] addImage:@"goldstars1.png"];
+    //myEmitter.texture = [[CCTextureCache sharedTextureCache] addImage:@"goldstars1.png"];
+    myEmitter.texture = [[CCTextureCache sharedTextureCache] addImage:@"goldstars1sm.png"];
     myEmitter.position = CGPointMake( mtp(bodyB->GetPosition().x) ,  mtp(bodyB->GetPosition().y));
     myEmitter.life =0.4f + CCRANDOM_0_1()*0.2 * xStrength;
     myEmitter.duration = 0.3f + CCRANDOM_0_1()*0.35 * xStrength;

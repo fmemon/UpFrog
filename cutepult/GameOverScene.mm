@@ -44,7 +44,7 @@
        // NSLog(@"After Restore: W1: %@  W2: %@  W3: %@  newWinner: %@", W1, W2, W3, newWinner);
 
         if (newHS >= H1 || newHS >= H2 || newHS >= H3) {
-            myAlertView = [[UIAlertView alloc] initWithTitle:@"Add Username" message:@"This gets covered." delegate:self cancelButtonTitle:@"Done" otherButtonTitles:@"Cancel", nil];
+            myAlertView = [[UIAlertView alloc] initWithTitle:@"New HighScorer" message:@"Congratulations." delegate:self cancelButtonTitle:@"Add" otherButtonTitles:@"Cancel", nil];
             myTextField = [[UITextField alloc] initWithFrame:CGRectMake(12.0, 30.0, 260.0, 25.0)];
             [myTextField setBackgroundColor:[UIColor whiteColor]];
             [myTextField setAutocorrectionType:UITextAutocorrectionTypeNo];
@@ -93,6 +93,11 @@
 		CCMenu *menu = [CCMenu menuWithItems:pause, nil];
 		menu.position = CGPointZero;
 		[self addChild:menu z:11];
+        
+        tapLabel = [CCLabelTTF labelWithString:@"All Rights Reserved 2012 info@BestWhich.com" fontName:@"Arial" fontSize:16];
+		tapLabel.position = ccp(229, 15.0f);    
+        tapLabel.color = ccBLUE;
+		[self addChild: tapLabel];
     }
     return self; 
 }

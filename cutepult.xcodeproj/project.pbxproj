@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		65101B3E1512F161003DD834 /* froggie.png in Resources */ = {isa = PBXBuildFile; fileRef = 65101B3C1512F161003DD834 /* froggie.png */; };
+		65101B3F1512F161003DD834 /* froggie.plist in Resources */ = {isa = PBXBuildFile; fileRef = 65101B3D1512F161003DD834 /* froggie.plist */; };
 		65354A7615127105002A9C57 /* goldstars1.png in Resources */ = {isa = PBXBuildFile; fileRef = 65354A6A15127105002A9C57 /* goldstars1.png */; };
 		65354A7715127105002A9C57 /* newPauseOFF.png in Resources */ = {isa = PBXBuildFile; fileRef = 65354A6C15127105002A9C57 /* newPauseOFF.png */; };
 		65354A7815127105002A9C57 /* newPauseOFFSelect.png in Resources */ = {isa = PBXBuildFile; fileRef = 65354A6D15127105002A9C57 /* newPauseOFFSelect.png */; };
@@ -177,8 +179,6 @@
 		65A1D70715013267009F1165 /* b2RevoluteJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65A1D6DA15013267009F1165 /* b2RevoluteJoint.cpp */; };
 		65A1D70815013267009F1165 /* b2RopeJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65A1D6DC15013267009F1165 /* b2RopeJoint.cpp */; };
 		65A1D70915013267009F1165 /* b2WeldJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65A1D6DE15013267009F1165 /* b2WeldJoint.cpp */; };
-		65B3F1BF15128B6300613A0D /* froggie.png in Resources */ = {isa = PBXBuildFile; fileRef = 65B3F1BD15128B6300613A0D /* froggie.png */; };
-		65B3F1C015128B6400613A0D /* froggie.plist in Resources */ = {isa = PBXBuildFile; fileRef = 65B3F1BE15128B6300613A0D /* froggie.plist */; };
 		65B3F1C5151296B400613A0D /* boing.caf in Resources */ = {isa = PBXBuildFile; fileRef = 65B3F1C3151296B400613A0D /* boing.caf */; };
 		65B3F1C6151296B400613A0D /* splash2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 65B3F1C4151296B400613A0D /* splash2.caf */; };
 		65EEDD3815007F7000EA6B76 /* ThrowRope.mm in Sources */ = {isa = PBXBuildFile; fileRef = 65EEDD3715007F7000EA6B76 /* ThrowRope.mm */; };
@@ -188,6 +188,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		65101B3C1512F161003DD834 /* froggie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = froggie.png; sourceTree = "<group>"; };
+		65101B3D1512F161003DD834 /* froggie.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = froggie.plist; sourceTree = "<group>"; };
 		65354A6A15127105002A9C57 /* goldstars1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = goldstars1.png; sourceTree = "<group>"; };
 		65354A6C15127105002A9C57 /* newPauseOFF.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newPauseOFF.png; sourceTree = "<group>"; };
 		65354A6D15127105002A9C57 /* newPauseOFFSelect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newPauseOFFSelect.png; sourceTree = "<group>"; };
@@ -527,8 +529,6 @@
 		65A1D6DD15013267009F1165 /* b2RopeJoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = b2RopeJoint.h; sourceTree = "<group>"; };
 		65A1D6DE15013267009F1165 /* b2WeldJoint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = b2WeldJoint.cpp; sourceTree = "<group>"; };
 		65A1D6DF15013267009F1165 /* b2WeldJoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = b2WeldJoint.h; sourceTree = "<group>"; };
-		65B3F1BD15128B6300613A0D /* froggie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = froggie.png; sourceTree = "<group>"; };
-		65B3F1BE15128B6300613A0D /* froggie.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = froggie.plist; sourceTree = "<group>"; };
 		65B3F1C3151296B400613A0D /* boing.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = boing.caf; sourceTree = "<group>"; };
 		65B3F1C4151296B400613A0D /* splash2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = splash2.caf; sourceTree = "<group>"; };
 		65EEDD3715007F7000EA6B76 /* ThrowRope.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ThrowRope.mm; sourceTree = "<group>"; };
@@ -586,8 +586,8 @@
 		65354A6715127105002A9C57 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				65B3F1BD15128B6300613A0D /* froggie.png */,
-				65B3F1BE15128B6300613A0D /* froggie.plist */,
+				65101B3C1512F161003DD834 /* froggie.png */,
+				65101B3D1512F161003DD834 /* froggie.plist */,
 				65354A6A15127105002A9C57 /* goldstars1.png */,
 				65354A6B15127105002A9C57 /* muteButton */,
 				65354A7015127105002A9C57 /* newPaddle.png */,
@@ -1217,10 +1217,10 @@
 				65354A7C15127105002A9C57 /* newrope.png in Resources */,
 				65354A7D15127105002A9C57 /* u13BMine.png in Resources */,
 				65354A7E15127105002A9C57 /* u13BMineHS.png in Resources */,
-				65B3F1BF15128B6300613A0D /* froggie.png in Resources */,
-				65B3F1C015128B6400613A0D /* froggie.plist in Resources */,
 				65B3F1C5151296B400613A0D /* boing.caf in Resources */,
 				65B3F1C6151296B400613A0D /* splash2.caf in Resources */,
+				65101B3E1512F161003DD834 /* froggie.png in Resources */,
+				65101B3F1512F161003DD834 /* froggie.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

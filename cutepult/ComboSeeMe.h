@@ -72,7 +72,8 @@
     
     BOOL stopWater;
     b2RopeJointDef rjd;
-
+    VRope *newRope;
+    NSMutableArray *walkAnimFrames;
 }
 
 // returns a CCScene that contains the ComboSeeMe as the only child
@@ -86,6 +87,6 @@
 - (void)scored:(b2Body*)bodyB;
 -(void)endGame:(b2Body*)bodyB;
 - (void)gotoHS;
--(void)removeRopes;
+- (CCAction*)createButterflyAnim:(BOOL)isTarget;
 
 @end

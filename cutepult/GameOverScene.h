@@ -32,7 +32,7 @@
     UITextField* myTextField;
     
     BOOL muted;
-
+    UIAlertView *myAlertView;
 }
 
 +(id) scene;

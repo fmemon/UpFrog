@@ -85,11 +85,13 @@ static inline float mtp(float d)
         
         stopWater = TRUE;
         muted = FALSE;
+        walkAnimFrames = [[NSMutableArray alloc] initWithCapacity:20];
 
         
-        b2Body* ground = NULL;
+        //b2Body* ground = NULL;
         b2BodyDef bd;
-        ground = world->CreateBody(&bd);
+        //ground = world->CreateBody(&bd);
+        world->CreateBody(&bd);
         
         bodyDef.type=b2_dynamicBody;
         b2Vec2 initVel;
@@ -125,6 +127,11 @@ static inline float mtp(float d)
         sprite = [CCSprite spriteWithSpriteFrameName:@"froggie1.png"];     
         [self addChild:sprite z:1 tag:88];
         [sprite runAction:[self createBlinkAnim:YES]];
+        
+        CCSprite *butterfly = [CCSprite spriteWithSpriteFrameName:@"Butterfly1.png"];     
+        [self addChild:butterfly z:-10 tag:88];
+        butterfly.position = ccp(60.0f, 140.0f);
+        [butterfly runAction:[self createButterflyAnim:YES]];
 
         //add the score sprites
         score100 = [CCSprite spriteWithSpriteFrameName:@"score100.png"];     
@@ -199,7 +206,7 @@ static inline float mtp(float d)
         rjd.maxLength= (circle2->GetPosition() - staticBody4->GetPosition()).Length(); //define max length of joint = current distance between bodies
         rjd.collideConnected = true;
         world->CreateJoint(&rjd); //create joint
-        VRope *newRope = [[VRope alloc] init:staticBody4 body2:circle2 spriteSheet:ropeSpriteSheet];
+        newRope = [[VRope alloc] init:staticBody4 body2:circle2 spriteSheet:ropeSpriteSheet];
         [vRopes addObject:newRope];
         
         [self schedule: @selector(tick:)]; 
@@ -308,7 +315,9 @@ static inline float mtp(float d)
 }
 
 - (CCAction*)createBlinkAnim:(BOOL)isTarget {
-    NSMutableArray *walkAnimFrames = [NSMutableArray array];
+   // NSMutableArray *walkAnimFrames = [NSMutableArray array];
+    [walkAnimFrames removeAllObjects];
+
     for (int i=1; i<5; i++) {
         //[walkAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:[NSString stringWithFormat:@"blinker%dsm.png", i]]];
         [walkAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:[NSString stringWithFormat:@"froggie%d.png", i]]];
@@ -330,6 +339,31 @@ static inline float mtp(float d)
                              nil]
                             ];
     return walkAction;
+}
+
+- (CCAction*)createButterflyAnim:(BOOL)isTarget {
+    [walkAnimFrames removeAllObjects];
+    for (int i=1; i<7; i++) {
+        //[walkAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:[NSString stringWithFormat:@"blinker%dsm.png", i]]];
+        [walkAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:[NSString stringWithFormat:@"Butterfly%d.png", i]]];
+    }
+    
+    CCAnimation *walkAnim2 = [CCAnimation animationWithFrames:walkAnimFrames delay:0.2f];
+    
+    CCAnimate *blink2 = [CCAnimate actionWithDuration:0.4f animation:walkAnim2 restoreOriginalFrame:YES];
+    
+    CCAction *walkAction2 = [CCRepeatForever actionWithAction:
+                            [CCSequence actions:
+                             [CCDelayTime actionWithDuration:CCRANDOM_0_1()*2.0f],
+                             blink2,
+                             [CCDelayTime actionWithDuration:CCRANDOM_0_1()*3.0f],
+                             blink2,
+                             [CCDelayTime actionWithDuration:CCRANDOM_0_1()*0.2f],
+                             blink2,
+                             [CCDelayTime actionWithDuration:CCRANDOM_0_1()*2.0f],
+                             nil]
+                            ];
+    return walkAction2;
 }
 
 -(void) draw
@@ -558,20 +592,13 @@ static inline float mtp(float d)
 
 */
 
--(void)removeRopes {
-	for(uint i=0;i<[vRopes count];i++) {
-		[[vRopes objectAtIndex:i] removeSprites];
-		[[vRopes objectAtIndex:i] release];
-	}
-	[vRopes removeAllObjects];
-}
 
 // on "dealloc" you need to release all your retained objects
 - (void) dealloc
 {
 //    To remove a rope you need to call the removeSprites method and then release:
-    [self removeRopes]; //remove the sprites of this rope from the spritebatchnode
-    [VRope release];
+    [newRope removeSprites];
+    [newRope release];
     
 	// in case you have something to dealloc, do it in this method
 	delete world;
@@ -581,6 +608,7 @@ static inline float mtp(float d)
     delete contactListener;
     
     [walls release];
+    [walkAnimFrames release];
     
     //IF you have particular spritesheets to be removed! Don't use these if you haven't any
     //[[CCSpriteFrameCache sharedSpriteFrameCache]removeSpriteFramesFromFile:@"froggie.plist"];

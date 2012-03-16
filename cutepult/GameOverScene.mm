@@ -44,7 +44,7 @@
        // NSLog(@"After Restore: W1: %@  W2: %@  W3: %@  newWinner: %@", W1, W2, W3, newWinner);
 
         if (newHS >= H1 || newHS >= H2 || newHS >= H3) {
-            UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:@"Add Username" message:@"This gets covered." delegate:self cancelButtonTitle:@"Done" otherButtonTitles:@"Cancel", nil];
+            myAlertView = [[UIAlertView alloc] initWithTitle:@"Add Username" message:@"This gets covered." delegate:self cancelButtonTitle:@"Done" otherButtonTitles:@"Cancel", nil];
             myTextField = [[UITextField alloc] initWithFrame:CGRectMake(12.0, 30.0, 260.0, 25.0)];
             [myTextField setBackgroundColor:[UIColor whiteColor]];
             [myTextField setAutocorrectionType:UITextAutocorrectionTypeNo];
@@ -292,6 +292,7 @@
     [tapLabel release];
     [newHSlabel release];
     [myTextField release];
+    [myAlertView release];
 	[super dealloc];
 }
 
